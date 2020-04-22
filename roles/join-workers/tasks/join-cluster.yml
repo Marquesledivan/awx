@@ -9,8 +9,7 @@
 - name: "Kubeadmn reset node cluster config"
   command: >
     kubeadm reset --force
-  register: kubeadm-reset_node
-
+   
 - name: "Kubeadmn join"
   shell: >
     kubeadm join --token={{ hostvars['K8S_TOKEN_HOLDER']['token'] }}
