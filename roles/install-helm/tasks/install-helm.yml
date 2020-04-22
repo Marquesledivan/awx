@@ -1,0 +1,6 @@
+- name: Install helm via snap
+  shell: snap install helm --classic
+  register: helm_result
+
+- name:
+  debug: var=helm_result

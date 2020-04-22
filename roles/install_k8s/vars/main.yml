@@ -1,0 +1,5 @@
+---
+php_packages_debian:
+    - kubelet
+    - kubeadm
+    - kubectl

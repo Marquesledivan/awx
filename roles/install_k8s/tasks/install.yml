@@ -1,0 +1,26 @@
+- name: Download Docker
+  get_url: 
+    url: https://get.docker.com
+    dest: /tmp/installer.sh
+    mode: 0755
+
+- name: Install Docker
+  shell: /tmp/installer.sh
+  notify: restart docker
+
+- name: Add Apt signing key
+  apt_key:
+    url: https://packages.cloud.google.com/apt/doc/apt-key.gpg
+    state: present
+
+- name: Add K8s repository
+  apt_repository:
+    repo: deb http://apt.kubernetes.io/ kubernetes-xenial main
+    state: present
+
+- name: Install k8s packages
+  apt:
+    name: "{{ php_packages_debian }}"
+  notify: restart packages
+
+
